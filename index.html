@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Todo List</h1>
+        <div v-if= "!isEditing" class="input">
+            <input class="text" type="text" v-model="todo" placeholder="Mời bạn nhập ...">
+            <input class="btn-add" type="submit" value="Add" @click="addTodo()">
+        </div>
+        <div v-else="isEditing" class="input"> 
+            <input class="text"type="text" v-model="todo">
+            <input class="btn-update" type="submit" value="Update" @click="updateTodo()">
+        </div>
+        
+        <ul>
+            <li class="todo" v-for="(todo, index) in todos">
+                {{todo}}
+
+                <button class="btn-edit" @click="editTodo(index,todo)">Edit</button>
+                <button class="btn-delete" @click="deleteTodo(index)">Delete</button>
+            </li>
+        </ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+</body>
+</html>
